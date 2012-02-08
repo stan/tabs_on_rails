@@ -44,12 +44,14 @@ module TabsOnRails
         @context.content_tag(:li, content, item_options)
       end
 
-      def divider(tab)
-        @context.content_tag(:li, nil, :class => "divider")
+      def divider(tab, item_options = {})
+        item_options.merge! :class => "divider"
+        @context.content_tag(:li, nil, item_options)
       end
 
       def nolink(tab, name, item_options = {})
-        @context.content_tag(:li, name, item_options)
+        content = @context.content_tag(:span, name)
+        @context.content_tag(:li, content, item_options)
       end
 
       # Returns an unordered list open tag.
